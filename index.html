@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/diarmidmackenzie/aframe-examples@latest/components/cursor-tracker.min.js"></script>
+
+     <title>Dark_Room_Staging_Area</title>
+</head>
+<body>
+    <a-scene light="defaultLightsEnabled:false">
+        
+        <a-assets>
+            
+        <a-assets-item id="floor" src="assets\TransBlGryFloor.glb"></a-assets-item>
+        <a-assets-item id="sky" src="assets\background.jpg"></a-assets-item>
+        <a-image id="rick" src="rick.jpeg" crossorigin="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.towleroad.com%2Fwp-content%2Fuploads%2F2021%2F02%2Fastley-1024x736.jpeg&f=1&nofb=1&ipt=5e90d1a6c9a535c949110ac4a0bce078a56436941ed6ed24b2d768bfa42fbcfc&ipo=images"></a-image>
+        </a-assets>
+
+        <a-sky src="#sky"></a-sky>
+
+       <a-entity gltf-model="assets\TransBlGryFloor.glb"> </a-entity>
+       <a-plane width="1000" height="1000" position="0 -1 0" rotation="-90 0 0"></a-plane>
+        
+       
+        <!--For some reason, cant connect cursor to Camera -->
+        <!--Camera
+        <a-entity id="rig" position="-1 5 3 ">
+            <a-entity id="camera" camera look-controls wasd-controls="" ></a-entity>
+              
+        </a-entity>-->
+
+        <a-camera position="-1 5 3" >
+            <!--<a-cursor color="white" position="0 0 -1" radius="1"></a-cursor>-->
+        </a-camera>
+
+        <!--Text in place Center-->
+        <a-entity id="textArea" position="-1 7.5 -5" geometry="primitive: plane; width: 3; height:auto" material="color: white; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 20;
+				transparent: true; opacity: 0.90; color: white;
+				value: Hello & Welcome to My Test Trial!" updater="">
+	    </a-entity>
+
+        <!--Text in place Look Left-->
+        <a-entity id="textArea" position="-5 5 -5" rotation="0 0 0" geometry="primitive: plane; width: 3; height:auto" material="color: white; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 20;
+				transparent: true; opacity: 0.90; color: white;
+				value: Look Left for Cube Rotation <-" updater="">
+	    </a-entity>
+
+        <!--Text in place Look Left // Left Panel-->
+        <a-entity id="textArea" position="-10 5 5" rotation="0 90 0" geometry="primitive: plane; width: 3; height:auto" material="color: white; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 20;
+				transparent: true; opacity: 0.90; color: white;
+				value: See The Cube Rotate" updater="">
+	    </a-entity>
+
+
+
+
+        <!--Text in place Look Right-->
+        <a-entity id="textArea" position="2.75 5 -5" rotation="0 0 0" geometry="primitive: plane; width: 3; height:auto" material="color: white; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 20;
+				transparent: true; opacity: 0.90; color: white;
+				value: Look Right To Change Size of Sphere ->" updater="">
+	    </a-entity>
+
+        <!--Text in place Look Right // Right Panel-->
+        <a-entity id="textArea" position="10 5 5" rotation="0 -90 0" geometry="primitive: plane; width: 3; height:auto" material="color: white; transparent: true; opacity: 0.80;" text="anchor: center; baseline: center; wrapCount: 20;
+				transparent: true; opacity: 0.90; color: white;
+				value: Click Sphere to Increase Size
+                Move Mouse Away to Decrease Size" updater="">
+	    </a-entity>
+
+        <!--Point Light-->
+        <a-entity light="type: point; intensity: 0.90; distance: 50; decay: 2"
+          position="0 10 3"></a-entity>
+        
+
+        <!--Sphere-->
+         <a-entity id="mouseCursor" cursor="rayOrigin:mouse"></a-entity>
+        <a-sphere geometry="primitive: sphere"
+        material="color: white"
+        position="17.5 7.5 5"
+        animation__mouseenter="property: scale; from: 1 1 1; to:5 5 5; startEvents: click; ";
+        animation__mouseleave="property: scale; from: 5 5 5; to:1 1 1; startEvents: mouseleave; ";></a-sphere>
+         
+
+        <!--Rotating Sphere-->
+        <a-box position="-17.5 7.5 5" width="5" height="5" depth="5" animation="property:rotation; to:360 360 180; easing:linear; loop:true; dur:10000"></a-box>>
+      
+
+    </a-scene>
+    
+
+    
+</body>
+</html>
